@@ -12,11 +12,26 @@ Array.prototype.insert = function(index, value) {
         // for(var i = 0; i < value.length; i++ ) {
         //     this.splice(index+i, 0, value[i]);
         // }
- 
-        value.forEach(function(e){
-            console.log(e);
-            //this.splice(index++, 0, e);
-        });
+
+        // 오류!!
+        // 콜백함수 안의 this는 어휘상의 this와 일치 하지 않는다.
+        // value.forEach(function(e){
+        //     console.log(e);
+        //     this.splice(index++, 0, e);
+        // });
+
+        // 해결방법1 : closure 사용하는 방법
+        // var _this = this;
+        // value.forEach(function(e){
+        //     _this.splice(index++, 0, e);
+        // });
+
+        var f = function(e){
+            this.splice(index++, 0, e);
+        }.bind(this);
+
+        value.forEach(f);
+
     } else{
         this.splice(index, 0, value);
     }
