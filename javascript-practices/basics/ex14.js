@@ -16,8 +16,32 @@ var url = "http://www.mysite.com/user?name=둘리&email"
 var url2 = escape(url);
 console.log(url2);
 
-// 2. encodeURI
+// 2. encodeURI: URL 전체 중 파라미터만 Encoding한다. url 전체를 encoding 해야 하는 경우(o)
+var url3 = encodeURI(url);
+console.log(url3);
 
+// 3. encodeURIComponent: url 중에 값만 Encoding해야 하는 경우 사용한다.
+var url4 = encodeURIComponent(url);
+console.log(url4);
 
-// 3. encodeURIComponent
+// 4. encodeURIComponent 사용 예
+// 만들어야 하는 url:  "http://www.mysite.com/user?name=둘리&email=dooly@gmail.com"
+
+var url = "https://www.mysite.com/user";
+var formData = {
+    name: "둘리",
+    email: "dooly@gmail.com"
+}
+
+var toQueryString = function(o) {
+    var qs = [];
+    for(prop in o) {
+        qs.push(prop + "=" + encodeURIComponent(o[prop]));
+    }
+
+    return qs.join("&");
+};
+
+console.log(url + "?" + toQueryString(formData));
+console.log(`${url}?${toQueryString(formData)}`);
 
