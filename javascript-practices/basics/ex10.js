@@ -15,7 +15,6 @@ a2[5] = 5;
 a2[10] = 10;
 console.log(a2, a2.length);
 
-
 // 생성자 함수의 파라미터가 2개 이상인 경우: 초기값 지정
 var a3 = new Array(0, 2, 4, 6, 8);
 console.log(a3,a3.length);
