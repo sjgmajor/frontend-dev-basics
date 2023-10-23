@@ -7,11 +7,26 @@
 <script src="/ch05/js/tabBox.js"></script>
 <script>
 tabBox.init();
-window.n = '둘리';
-console.log(window.n, n);
 
-var e = 'dooly@gmail.com';
-console.log(window.e, e);
+var tabBox = {
+	_init: function() {
+		var lis = document.querySelectorAll('.tab-box li');
+		lis.forEach(function() {
+			li.addEventListner('click', tabBox.onTabClicked);
+		});
+	},
+	init: function() {
+		window.addEventListener('load', this._init);
+	},
+	onTabClicked: function(e) {
+		var liSelected = document.querySelectorAll('.tab-box li.selected');
+		liSelected.forEach(function(li) {
+			li.className = '';
+		});
+		
+		this.className = 'selected';
+	}
+};
 </script>
 <body>
 <div class="tab-box">

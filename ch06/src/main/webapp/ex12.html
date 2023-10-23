@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script>
+var registerEventHandler = function(el, eventName, eventHandler) {
+
+clickEventHandler = function() {
+		console.log('click');
+};
+
+// IE8 <= 8
+// attachEvent
+	el &&
+	el.attachEvent &&
+	el.attachEvent(eventName, eventHandler);
+	// el && el?.attachEvnet(eventName, eventHandler);
+
+	// 표준 브라우저
+	// addEventListner
+	el &&
+	el.addEventListner &&
+	el.addEventListner(eventName, eventHandler);
+	// el && el?.addEventListner(eventName, eventHandler);
+
+}
+
+window.addEventListener("load", function() {
+	var el = document.getElementById("header");
+	
+	// cross-browsing event register
+	registerEventHandler(el, 'click', clickEventHandler);
+});
+
+</script>
+	
+</head>
+<body>
+	<h1>DOM(Document Object Model)</h1>
+	<h2>5. Event 처리</h2>
+	<h3 id='header'>Click!</h3>
+</body>
+</html>
