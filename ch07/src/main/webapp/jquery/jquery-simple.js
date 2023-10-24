@@ -1,11 +1,29 @@
-var _jQuery = functioin(elements) {
-	this.length = elements.legnth;
+var _jQuery = function(elements) {
+	this.length = elements.length;
 	for(var i = 0; i < this.length; i++) {
 		this[i] = elements[i];
 	}
 }
 
-var _jQuery = functioin(param) {
+_jQuery.prototype.jquery = '0.0.1.beta';
+
+_jQuery.prototype.click = function(handler) {
+	for(var i = 0; i < this.length; i++){
+		this[i].addEventListener('click', handler);
+	}
+	
+	return this;
+}
+
+_jQuery.prototype.css = function(name, value) {
+	for(var i = 0; i < this.length; i++){
+		this[i].style[name] = value;
+	}
+	
+	return this;
+}
+
+var jQuery = function(param) {
 	if(typeof(param) === 'function') {
 		window.addEventListener('load', param)
 		return;
@@ -19,4 +37,4 @@ var _jQuery = functioin(param) {
 	return new _jQuery(elements || []);
 }
 
-var $ = j_jQuery;
+var $ = jQuery;
